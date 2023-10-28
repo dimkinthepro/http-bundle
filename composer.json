@@ -1,0 +1,42 @@
+{
+    "name": "dimkinthepro/http-bundle",
+    "type": "symfony-bundle",
+    "description": "Request validation bundle for Symfony",
+    "keywords": ["symfony", "bundle", "http", "request", "validation"],
+    "homepage": "https://github.com/dimkinthepro/http-bundle",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.2",
+        "symfony/dotenv": "^6.3",
+        "symfony/framework-bundle": "^6.3",
+        "symfony/validator": "6.3.*",
+        "symfony/yaml": "6.3.*"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.26",
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^10.3",
+        "squizlabs/php_codesniffer": "dev-master"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Dimkinthepro\\Http\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dimkinthepro\\Http\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "check-code": [
+            "php-cs-fixer fix ./src ./tests --diff --config=php-cs-fixer.php",
+            "phpcs ./src ./tests --standard=phpcs.xml -d memory_limit=500M",
+            "phpstan analyse -c phpstan.neon --memory-limit=500M",
+            "vendor/bin/phpunit"
+        ]
+    }
+}
