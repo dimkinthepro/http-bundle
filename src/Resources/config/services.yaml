@@ -1,0 +1,17 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        bind:
+            $requestValidationEnabled: '%dimkinthepro_http.config.request_validation_enabled%'
+            $extraFieldsAllowed: '%dimkinthepro_http.config.extra_fields_allowed%'
+            $handleValidationErrors: '%dimkinthepro_http.config.handle_validation_errors%'
+            $responseErrorFormat: '%dimkinthepro_http.config.response_error_format%'
+
+    Dimkinthepro\Http\:
+        resource: '../../'
+        exclude:
+            - '../../DependencyInjection/*'
+            - '../../Domain/Entity/*'
+            - '../../**/*Enum.php'
+            - '../../**/*Exception.php'
